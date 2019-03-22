@@ -5,11 +5,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Toast;
 
-import com.lyz.taglayout.tag.OnTagClickListener;
-import com.lyz.taglayout.tag.Tag;
-import com.lyz.taglayout.tag.TagLayout;
+
+import com.lyz.taglayoutlib.OnTagClickListener;
+import com.lyz.taglayoutlib.Tag;
+import com.lyz.taglayoutlib.TagLayout;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * @author liyanze
@@ -24,6 +26,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         tagLayout = findViewById(R.id.tagLayout);
 
+        init();
+
         findViewById(R.id.tv).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -33,9 +37,12 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void init(){
+    private void init() {
         ArrayList<Tag> list = new ArrayList<>();
-        for (int i = 0; i < 15; i++) {
+        Random random = new Random();
+        int size = random.nextInt(50) + 1;
+        System.out.println("size:" + size);
+        for (int i = 0; i < size; i++) {
             Tag tag = Tag.newTag(this, i);
             tag.setText("aaa" + String.valueOf(i * 13));
             list.add(tag);

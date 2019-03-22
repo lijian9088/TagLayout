@@ -1,12 +1,10 @@
-package com.lyz.taglayout.tag;
+package com.lyz.taglayoutlib;
 
 import android.content.Context;
 import android.graphics.Color;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.util.TypedValue;
-
-import com.lyz.taglayout.R;
 
 /**
  * @author liyanze
