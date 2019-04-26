@@ -1,8 +1,11 @@
 package com.lyz.taglayout;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Toast;
 
 
@@ -40,7 +43,8 @@ public class MainActivity extends AppCompatActivity {
     private void init() {
         ArrayList<Tag> list = new ArrayList<>();
         Random random = new Random();
-        int size = random.nextInt(50) + 1;
+//        int size = random.nextInt(200) + 1;
+        int size = 200;
         System.out.println("size:" + size);
         for (int i = 0; i < size; i++) {
             Tag tag = Tag.newTag(this, i);

@@ -188,60 +188,60 @@ public class TagLayout extends ViewGroup implements View.OnClickListener {
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
         System.out.println("********onLayout********");
 
-//        float totalWidth = 0;
-//        float totalHeight = 0;
-//        float lineHeight = 0;
-//
-//        int childCount = getChildCount();
-//        for (int i = 0; i < childCount; i++) {
-//            View child = getChildAt(i);
-//            int width = child.getMeasuredWidth();
-//            int height = child.getMeasuredHeight();
-//            MarginLayoutParams params = (MarginLayoutParams) child.getLayoutParams();
-//
-//            int left = 0;
-//            int top = 0;
-//            int right = 0;
-//            int bottom = 0;
-//
-//            int oneWidth = (int) (width + params.leftMargin + params.rightMargin + xLineSpacing * 2);
-//            int oneHeight = (int) (height + params.topMargin + params.bottomMargin + yLineSpacing * 2);
-//
-//            if ((totalWidth + oneWidth + getPaddingLeft() + getPaddingRight()) <= getWidth()) {
-//                //一行未满
-//                left = (int) (totalWidth + getPaddingLeft() + params.leftMargin + xLineSpacing);
-//                top = (int) (totalHeight + getPaddingTop() + params.topMargin + yLineSpacing);
-//                right = left + width;
-//                bottom = top + height;
-//
-//            } else {
-//                //一行已满，需要换行
-//                totalWidth = 0;
-//                totalHeight = totalHeight + lineHeight;
-//                lineHeight = 0;
-//
-//                left = (int) (params.leftMargin + getPaddingLeft() + xLineSpacing);
-//                top = (int) (totalHeight + getPaddingLeft() + params.topMargin + yLineSpacing);
-//                right = left + width;
-//                bottom = top + height;
-//
-//            }
-//
-//            lineHeight = lineHeight > oneHeight ? lineHeight : oneHeight;
-//            totalWidth = totalWidth + oneWidth;
-//
-//            child.layout(left, top, right, bottom);
-//        }
+        float totalWidth = 0;
+        float totalHeight = 0;
+        float lineHeight = 0;
+
+        int childCount = getChildCount();
+        for (int i = 0; i < childCount; i++) {
+            View child = getChildAt(i);
+            int width = child.getMeasuredWidth();
+            int height = child.getMeasuredHeight();
+            MarginLayoutParams params = (MarginLayoutParams) child.getLayoutParams();
+
+            int left = 0;
+            int top = 0;
+            int right = 0;
+            int bottom = 0;
+
+            int oneWidth = (int) (width + params.leftMargin + params.rightMargin + xLineSpacing * 2);
+            int oneHeight = (int) (height + params.topMargin + params.bottomMargin + yLineSpacing * 2);
+
+            if ((totalWidth + oneWidth + getPaddingLeft() + getPaddingRight()) <= getWidth()) {
+                //一行未满
+                left = (int) (totalWidth + getPaddingLeft() + params.leftMargin + xLineSpacing);
+                top = (int) (totalHeight + getPaddingTop() + params.topMargin + yLineSpacing);
+                right = left + width;
+                bottom = top + height;
+
+            } else {
+                //一行已满，需要换行
+                totalWidth = 0;
+                totalHeight = totalHeight + lineHeight;
+                lineHeight = 0;
+
+                left = (int) (params.leftMargin + getPaddingLeft() + xLineSpacing);
+                top = (int) (totalHeight + getPaddingLeft() + params.topMargin + yLineSpacing);
+                right = left + width;
+                bottom = top + height;
+
+            }
+
+            lineHeight = lineHeight > oneHeight ? lineHeight : oneHeight;
+            totalWidth = totalWidth + oneWidth;
+
+            child.layout(left, top, right, bottom);
+        }
 
         //使用Line，仅支持width为match_parent
-        for (int i = 0; i < lines.size(); i++) {
-            Line line = lines.get(i);
-            List<Line.Child> children = line.getChildren();
-            for (int j = 0; j < children.size(); j++) {
-                Line.Child child = children.get(j);
-                child.view.layout(child.left, child.top, child.right, child.bottom);
-            }
-        }
+//        for (int i = 0; i < lines.size(); i++) {
+//            Line line = lines.get(i);
+//            List<Line.Child> children = line.getChildren();
+//            for (int j = 0; j < children.size(); j++) {
+//                Line.Child child = children.get(j);
+//                child.view.layout(child.left, child.top, child.right, child.bottom);
+//            }
+//        }
     }
 
     @Override
